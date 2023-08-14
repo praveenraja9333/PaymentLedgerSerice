@@ -4,7 +4,6 @@ import com.vrp.system.paymentsystem.paymentledgerservice.dao.LedgerEntryDao;
 import com.vrp.system.paymentsystem.paymentledgerservice.models.LedgerEntry;
 import com.vrp.system.paymentsystem.paymentledgerservice.models.Order;
 import com.vrp.system.paymentsystem.paymentledgerservice.models.PaymentOrder;
-import com.vrp.system.paymentsystem.paymentledgerservice.models.builders.LedgerEntryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +23,7 @@ public class LedgerEntryService {
             try {
                 LedgerEntry debitledgerEntry = LedgerEntry.newBuilder().setCheckoutId(order.getCheckoutid()).setUserInfo(order.getBuyerinfo())
                         .setDebit(currencyFormatter.parse(po.getAmount()).doubleValue()).setCredit(0.0).build();
-                LedgerEntry creditledgerEntry = LedgerEntry.newBuilder().setCheckoutId(order.getCheckoutid()).setUserInfo(po.getBuyername())
+                LedgerEntry creditledgerEntry = LedgerEntry.newBuilder().setCheckoutId(order.getCheckoutid()).setUserInfo(order.getBuyerinfo())
                         .setDebit(0.0)
                         .setCredit(currencyFormatter.parse(po.getAmount()).doubleValue())
                         .build();
