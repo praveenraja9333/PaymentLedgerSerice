@@ -27,8 +27,8 @@ public class LedgerEntryService {
                         .setDebit(0.0)
                         .setCredit(currencyFormatter.parse(po.getAmount()).doubleValue())
                         .build();
-               // ledgerEntryDao.save(debitledgerEntry);
-               // ledgerEntryDao.save(creditledgerEntry);
+                ledgerEntryDao.save(debitledgerEntry);
+                ledgerEntryDao.save(creditledgerEntry);
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
